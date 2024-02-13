@@ -43,18 +43,25 @@ $(document).ready(function() {
             setTimeout(function () {
             $("body").removeClass("game-over");
             },200);
-            $("#level-title").text("GameOver,  Press anykey to Restart");
+            $("#level-title").text("GameOver,  Press any key to Restart");
+            startOver();
         }
     }
 
+    function startOver() {
+        level= 0;
+        gamePattern = [];
+        started = false;
+    }
+
     // Function to start the game
-    $("document").keypress(function () {
+    $(document).keypress(function () {
         if (!started) {
-            $('#level-started').text('Level ' + level);
+            $('#level-title').text('Level ' + level);
             nextSequence();
             started = true;
         }
-    })
+    });
 
 
     // Attach click event handler to buttons
