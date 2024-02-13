@@ -36,6 +36,12 @@ $(document).ready(function() {
     function checkAnswer(currentLevel) {
         if (userClickedPattern[currentLevel] === gamePattern[currentLevel]){
             console.log("success");
+            if (userClickedPattern.length === gamePattern.length) {
+                setTimeout(function() {
+                    nextSequence();
+                    userClickedPattern = [];
+                }, 1000);
+            }
         } else {
             console.log("wrong");
             playSound("wrong");
