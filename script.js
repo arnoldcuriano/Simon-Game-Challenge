@@ -18,10 +18,18 @@ $(document).ready(function() {
         playSound(randomChosenColour);  
     } 
 
-    function 
-    
-    // Call nextSequence to start the game
+
     nextSequence();
+
+    function animatePress(currentColour) {
+        $("#" + currentColour).addClass("pressed");
+
+       setTimeout(function() {
+        $("#" + currentColour).removeClass("pressed");
+       },100);
+    }
+
+
 
     // Attach click event handler to buttons
     $('.btn').click(function() {
