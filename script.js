@@ -32,9 +32,20 @@ $(document).ready(function() {
         }, 100);
     }
 
-    // Initialize game sequence
-    nextSequence();
 
+    function checkAnswer(currentLevel) {
+        if (userClickedPattern[currentLevel] === gamePattern[currentLevel]){
+            console.log("success");
+        } else {
+            console.log("wrong");
+            playSound("wrong");
+            $("body").addClass("game-over");
+            setTimeout(function () {
+            $("body").removeClass("game-over");
+            },200);
+            $("#level-title").text("GameOver,  Press anykey to Restart");
+        }
+    }
 
     // Function to start the game
     $("document").keypress(function () {
@@ -58,5 +69,11 @@ $(document).ready(function() {
         animatePress(userChosenColour);
         // Log userClickedPattern for debugging
         console.log(userClickedPattern);
+        checkAnswer(userClickedPattern.length - 1);
     });
+
+
+        // Initialize game sequence
+        nextSequence();
+
 });
