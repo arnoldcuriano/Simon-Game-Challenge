@@ -15,9 +15,11 @@ $(document).ready(function() {
         gamePattern.push(randomChosenColour);
 
         $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
-        playSound(randomChosenColour);
-    }
+        playSound(randomChosenColour);  
+    } 
 
+    function 
+    
     // Call nextSequence to start the game
     nextSequence();
 
