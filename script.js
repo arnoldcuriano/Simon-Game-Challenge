@@ -3,6 +3,8 @@ $(document).ready(function() {
     var buttonColours = ["red", "blue", "green", "yellow"];
     var gamePattern = [];
     var userClickedPattern = [];
+    var started = false;
+    var level = 0;
 
     // Function to play sound
     function playSound(name) {
@@ -12,6 +14,8 @@ $(document).ready(function() {
 
     // Function to generate next sequence
     function nextSequence() {
+        level++;
+        $('#level-title').text('Level ' + level);
         var randomNumber = Math.floor(Math.random() * buttonColours.length);
         var randomChosenColour = buttonColours[randomNumber];
         gamePattern.push(randomChosenColour);
@@ -30,6 +34,17 @@ $(document).ready(function() {
 
     // Initialize game sequence
     nextSequence();
+
+
+    // Function to start the game
+    $("document").keypress(function () {
+        if (!started) {
+            $('#level-started').text('Level ' + level);
+            nextSequence();
+            started = true;
+        }
+    })
+
 
     // Attach click event handler to buttons
     $('.btn').click(function() {
